@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlJugador : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ControlJugador : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     public int fuerzasalto;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -70,4 +72,10 @@ public class ControlJugador : MonoBehaviour
     //utilizar el operador el "?" cuando pueda hacer un  if en una linea (se usa para asignaciones)
     //el vector3 parase ser usado para moviminetos generales de personajes en 2D 
     //
+
+    //OJO se puede llamar directmamente a metodos que estan en el scrip
+    public void FinalizarJuego()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

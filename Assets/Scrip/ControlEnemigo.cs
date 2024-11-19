@@ -35,24 +35,24 @@ public class ControlEnemigo : MonoBehaviour
     {
         Vector3 posicionDestino =(movimientoAfin) ? posicionfin : posicioninicio;
         transform.position = Vector3.MoveTowards(transform.position, posicionDestino,velocidad*Time.deltaTime);
+
         if(transform.position==posicioninicio)
         {
-            movimientoAfin = false;
+            movimientoAfin = true;
             cangrejo.flipX = false;
-
         }
         else if(transform.position==posicionfin)
         {
-            movimientoAfin=true;
+            movimientoAfin = false;
             cangrejo.flipX = true;
         }
      
 }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OntriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "player")
+        if(collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<ControlJugador>().FinalizarJuego();
+            collision.gameObject.GetComponent<ControlJugador>().QuitarVidas();
         }
     }
 }

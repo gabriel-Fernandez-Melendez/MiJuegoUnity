@@ -11,7 +11,17 @@ public class ControlJugador : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     public int fuerzasalto;
-    
+    public int numVidas;
+    //cuando  utilizamos el mismo audio source usamos el metodo playoneshot
+    public AudioSource audiosourse;
+    public AudioClip clip;
+
+    public Canvas hud;
+
+
+    //para ver si el jugador es vulnerable o no 
+    private bool vulnerable;
+    public int puntuacion;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +31,8 @@ public class ControlJugador : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         //inicializamos el animator
         animator = GetComponent<Animator>();
+        //es vulnerable al comenzar 
+        vulnerable = true;
     }
 
     //es mejor  usar este metodo en el movimiento por que su actualizacion se la puedes dar de forma especifitca
@@ -78,4 +90,31 @@ public class ControlJugador : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void QuitarVidas()
+    {
+        if (vulnerable)
+        {
+            audiosourse.PlayOneShot(clip);
+            numVidas--;
+        if(numVidas==0)
+            FinalizarJuego();
+            Invoke("HacerVulnerable", 1f);
+        sprite.color = Color.red;
+        }
+      
+    }
+
+    private void HacerVulnerable()
+    {
+        vulnerable = true;
+        sprite.color = Color.white;
+    }
+
+    public void incrementarPuntos(int puntos)
+    {
+        //el metodo que usa el metodo del power up
+        puntuacion += puntos;
+    }
+
 }

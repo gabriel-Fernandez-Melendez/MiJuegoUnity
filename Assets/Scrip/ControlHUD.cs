@@ -6,7 +6,8 @@ using TMPro.Examples;
 
 public class ControlHUD : MonoBehaviour
 {
-    public TextMeshProUGUI vidas;
+    public TextMeshProUGUI txtvidas;
+    public TextMeshProUGUI puntuaciontxt;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +21,13 @@ public class ControlHUD : MonoBehaviour
 
     }
 
-    public void setvidastxt()
+    public void setvidastxt(int vidas)
     {
-        vidas.text = "Vidas : "+vidas;
+        txtvidas.text = "Vidas : "+vidas;
+    }
+
+    public void Setpuntuacion(int puntuacion)
+    {
+        puntuaciontxt.text="puntuacion :"+puntuacion;
     }
 }

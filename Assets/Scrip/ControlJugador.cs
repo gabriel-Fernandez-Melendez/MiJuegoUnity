@@ -15,9 +15,9 @@ public class ControlJugador : MonoBehaviour
     //cuando  utilizamos el mismo audio source usamos el metodo playoneshot
     public AudioSource audiosourse;
     public AudioClip clip;
-
+    //canvas para mostrar las  vidas
     public Canvas hud;
-
+    private ControlHUD hudControl;
 
     //para ver si el jugador es vulnerable o no 
     private bool vulnerable;
@@ -33,6 +33,7 @@ public class ControlJugador : MonoBehaviour
         animator = GetComponent<Animator>();
         //es vulnerable al comenzar 
         vulnerable = true;
+        hudControl = hud.GetComponent<ControlHUD>();
     }
 
     //es mejor  usar este metodo en el movimiento por que su actualizacion se la puedes dar de forma especifitca
@@ -113,8 +114,8 @@ public class ControlJugador : MonoBehaviour
 
     public void incrementarPuntos(int puntos)
     {
-        //el metodo que usa el metodo del power up
         puntuacion += puntos;
+        hudControl.Setpuntuacion(puntuacion);
     }
 
 }

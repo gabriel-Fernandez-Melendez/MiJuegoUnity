@@ -5,7 +5,6 @@ using UnityEngine;
 public class ControlPowerUp : MonoBehaviour
 {
     public int cantidad;
-
     public AudioSource audiosourse;
     public AudioClip clip;
     // Start is called before the first frame update
